@@ -1,0 +1,87 @@
+package controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
+import model.User;
+
+@Named(value = "racingController")
+@ApplicationScoped
+public class RacingController {
+
+    String name;
+    private List<User> users;
+    private Long clicks;
+
+    public RacingController() {
+        users = new ArrayList<>();
+        clicks = 0L;
+    }
+
+    public String click() {
+        boolean contain = false;
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                contain = true;
+                user.click();
+            }
+        }
+        if (!contain) {
+            users.add(new User(name, 1L));
+        }
+        clicks++;
+        return "index";
+    }
+
+    public Long getUsersClics() {
+        for (User user : users) {
+            if(user.getName().equals(this.name))
+                return user.getClics();
+        }
+        return 0L;
+    }
+    
+    public String racingTrack() {
+        String retur="";
+        for (User user : users) {
+            retur+=user;
+            retur+="\n";
+        }
+        return retur;
+    }
+    
+    public Long getClicks() {
+        return clicks;
+    }
+
+    public void setClicks(Long clicks) {
+        this.clicks = clicks;
+    }
+    
+    
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void resetUsers() {
+        users = new ArrayList<>();
+    }
+
+    public void click(String user, Long clicks) {
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+}
