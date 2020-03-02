@@ -34,23 +34,37 @@ public class RacingController {
         return "index";
     }
 
-    public Long getUsersClics() {
+    public Long getUsersClicks() {
         for (User user : users) {
-            if(user.getName().equals(this.name))
+            if (user.getName().equals(this.name)) {
                 return user.getClics();
+            }
         }
         return 0L;
     }
-    
+
+//    public String racingTrack() {
+//        String retur="";
+//        for (User user : users) {
+//            retur+=user;
+//            retur+="\n";
+//        }
+//        return retur;
+//    }
     public String racingTrack() {
-        String retur="";
+        String retur = "";
         for (User user : users) {
-            retur+=user;
-            retur+="\n";
+            if (user.getClics() <= user.getRange()) {
+                retur += user;
+                retur += "\n";
+            } else {
+                retur = "Winner is " + user.getName();
+                //return retur;
+            }
         }
         return retur;
     }
-    
+
     public Long getClicks() {
         return clicks;
     }
@@ -58,15 +72,24 @@ public class RacingController {
     public void setClicks(Long clicks) {
         this.clicks = clicks;
     }
-    
-    
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = fixNameLength(name, 3);
+    }
+
+    public String fixNameLength(String start, int length) {
+        if (start.length() >= length) {
+            return start.substring(0, length);
+        } else {
+            while (start.length() < length) {
+                start += " ";
+            }
+            return start;
+        }
     }
 
     public void resetUsers() {
