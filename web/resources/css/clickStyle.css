@@ -1,0 +1,25 @@
+body{
+    background-color: blue; 
+    font-family: "Consolas";
+    font-size: 10px;
+    color: white;
+}
+
+h1{
+    font-family: "Consolas";
+    font-size: 40px;
+    color: white;
+}
+
+h2{
+    font-family: "Consolas";
+    font-size: 20px;
+    color: red;
+}
+
+h3{
+    font-family: "Consolas";
+    font-size: 10px;
+    color: white; 
+    background-color: grey; 
+}
