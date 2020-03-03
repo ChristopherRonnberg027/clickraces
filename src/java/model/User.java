@@ -14,7 +14,7 @@ public class User {
     private String name;
     private Long clicks;
 
-    private Integer range = 30;
+    private Integer range = 100;
 
     public User() {
         clicks = 0L;

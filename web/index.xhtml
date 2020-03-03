@@ -10,19 +10,24 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="1" style="margin: 0 auto">
                 <h:outputLabel  value="Username"/>
                 <h:inputText  value="#{racingController.name}"/>
-
-
-                <h:commandButton value="Race!" action="#{racingController.click()}"/>
-
-
-
                 #{racingController.name} Clicks: #{racingController.usersClicks}
+            </h:panelGrid>
+            <h:panelGrid columns="1" style="margin: 0 auto">
                 <br/>
-                <h2>#{racingController.racingTrack()}</h2>
-                <h:commandButton value="Restart" action="#{racingController.resetUsers()}"/>
+                <button class="btn" type="Submit" f:actionListiner="#{racingController.click()}" >Race</button>
+                <br/>
+            </h:panelGrid>
+
+            <h2>#{racingController.racingTrack()}</h2>
+            <h:panelGrid columns="1" style="margin: 0 auto">
+
+                <br/>
+                <br/>
+                <br/>
+                <h:commandButton style="float" value="Restart" action="#{racingController.resetUsers()}"/>
             </h:panelGrid>
         </h:form>
     </h:body>
