@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,26 +50,22 @@ public class ResultsDaoJDBC implements ResultDAO {
     }
 
     @Override
-    public List<Results> getToTen() {
+    public String getToTen() {
+            String topTen = "";
         try {
-            List<Results> list = null;
-            Results res = null;
             st = conn.createStatement();
             rs = st.executeQuery("SELECT name, COUNT(name) FROM results GROUP BY name ORDER BY COUNT(name) DESC;");
-            if (rs != null) {
                 while (rs.next()) {
-                    res.setUserName(rs.getString("name"));
-                    res.setScore(rs.getInt("COUNT(name)"));
-                    list.add(res);
+                    topTen += rs.getString("name");
+                    topTen += "     ";
+                    topTen += rs.getInt("COUNT(name)");
+                    topTen += "\n";
                 }
-            }
             st.close();
-
-            return list;
+            return topTen;
         } catch (SQLException ex) {
-            Logger.getLogger(ResultsDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return "";
     }
 
 }

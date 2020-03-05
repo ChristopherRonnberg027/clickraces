@@ -14,6 +14,6 @@ import model.Results;
  */
 public interface ResultDAO {
     void createResult(String userName);
-    List<Results> getToTen();
+    String getToTen();
     
 }
