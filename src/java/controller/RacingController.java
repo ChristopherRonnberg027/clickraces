@@ -73,7 +73,9 @@ public class RacingController {
                     db.createResult(user.getName());
                 }    
                 finished=true;
-                retur = "Winner is " + user.getName();
+                retur = "Winner is " + user.getName() 
+                        + "\n"
+                        + db.getToTen();
                 //return retur;
             }
         }
