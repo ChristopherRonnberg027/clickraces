@@ -89,7 +89,7 @@ public class RacingController {
             return start.substring(0, length);
         } else {
             while (start.length() < length) {
-                start += " ";
+                start += "_";
             }
             return start;
         }
