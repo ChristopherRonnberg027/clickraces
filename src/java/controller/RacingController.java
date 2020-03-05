@@ -17,6 +17,7 @@ public class RacingController {
     public RacingController() {
         users = new ArrayList<>();
         clicks = 0L;
+        name = "";
     }
 
     public String click() {
@@ -36,7 +37,7 @@ public class RacingController {
 
     public Long getUsersClicks() {
         for (User user : users) {
-            if (user.getName().equals(this.name)) {
+            if (!(users.isEmpty()) && user.getName().equals(this.name)) {
                 return user.getClics();
             }
         }
@@ -54,6 +55,8 @@ public class RacingController {
     public String racingTrack() {
         String retur = "";
         for (User user : users) {
+            if(users.isEmpty())
+                return "";
             if (user.getClics() <= user.getRange()) {
                 retur += user;
                 retur += "\n";
