@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import model.User;
 import recource.ResultsDaoJDBC;
 
@@ -40,7 +38,7 @@ public class RacingController {
             users.add(new User(name, 1L));
         }
         clicks++;
-        return "index";
+        return "index2";
     }
 
     public Long getUsersClicks() {
