@@ -54,7 +54,7 @@ public class ResultsDaoJDBC implements ResultDAO {
             String topTen = "";
         try {
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT name, COUNT(name) FROM results GROUP BY name ORDER BY COUNT(name) DESC;");
+            rs = st.executeQuery("SELECT name, COUNT(name) FROM results GROUP BY name ORDER BY COUNT(name) DESC LIMIT 10;");
                 while (rs.next()) {
                     topTen += rs.getString("name");
                     topTen += "     ";

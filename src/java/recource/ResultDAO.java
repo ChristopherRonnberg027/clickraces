@@ -5,8 +5,6 @@
  */
 package recource;
 
-import java.util.List;
-import model.Results;
 
 /**
  *
