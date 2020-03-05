@@ -6,8 +6,6 @@
 package managedbeans;
 
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
-
 
 @Named(value = "userManagerBean")
 public class UserManagerBean {
