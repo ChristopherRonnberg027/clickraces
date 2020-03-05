@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import model.User;
+import recource.ResultsDaoJDBC;
 
 @Named(value = "racingController")
 @ApplicationScoped
@@ -13,11 +16,16 @@ public class RacingController {
     String name;
     private List<User> users;
     private Long clicks;
+    private boolean finished;
+    ResultsDaoJDBC db;
+    
 
     public RacingController() {
+        db = new ResultsDaoJDBC();
         users = new ArrayList<>();
         clicks = 0L;
         name = "";
+        finished = false;
     }
 
     public String click() {
@@ -57,10 +65,14 @@ public class RacingController {
         for (User user : users) {
             if(users.isEmpty())
                 return "";
-            if (user.getClics() <= user.getRange()) {
+            if (!finished && (user.getClics() <= user.getRange())) {
                 retur += user;
                 retur += "\n";
             } else {
+                if(!finished) {
+                    db.createResult(user.getName());
+                }    
+                finished=true;
                 retur = "Winner is " + user.getName();
                 //return retur;
             }
@@ -97,6 +109,7 @@ public class RacingController {
 
     public void resetUsers() {
         users = new ArrayList<>();
+        finished = false;
     }
 
     public void click(String user, Long clicks) {

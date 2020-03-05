@@ -5,15 +5,15 @@
  */
 package recource;
 
-import java.util.List;
-import model.Results;
-
 /**
  *
  * @author ITHSivju
  */
-public interface ResultDAO {
-    void createResult(String userName);
-    List<Results> getToTen();
-    
+public class MainTest {
+    public static void main(String[] args) {
+        ResultsDaoJDBC db = new ResultsDaoJDBC();
+        
+        System.out.println(db.getToTen());
+        
+    }
 }

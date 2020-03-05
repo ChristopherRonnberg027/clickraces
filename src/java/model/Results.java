@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +15,8 @@ import javax.persistence.Id;
  *
  * @author ITHSivju
  */
-public class Result implements Serializable {
+@Entity
+public class Results implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -22,12 +24,23 @@ public class Result implements Serializable {
     private Long id;
     
     private String userName;
+    private int score;
     
-    public Result(){}
-    public Result(String name){
+    public Results(){}
+    public Results(String name, int score){
         this.userName = name;
+        this.score = score;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+    
+    
     public String getUserName() {
         return userName;
     }
@@ -56,10 +69,10 @@ public class Result implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Result)) {
+        if (!(object instanceof Results)) {
             return false;
         }
-        Result other = (Result) object;
+        Results other = (Results) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
