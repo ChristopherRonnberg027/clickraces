@@ -17,7 +17,7 @@
             </h:panelGrid>
             <h:panelGrid columns="1" style="margin: 0 auto">
                 <br/>
-                <button class="btn" type="Submit" f:actionListiner="#{racingController.click()}" >Race</button>
+                <h:commandButton value="Race" action="#{racingController.click()}" style="width: 100px; height: 50px; color: green;" />
                 <br/>
             </h:panelGrid>
 
@@ -27,7 +27,7 @@
                 <br/>
                 <br/>
                 <br/>
-                <h:commandButton style="float" value="Restart" action="#{racingController.resetUsers()}"/>
+                <h:commandButton value="Restart" action="#{racingController.resetUsers()}" style="color: red"/>
             </h:panelGrid>
         </h:form>
     </h:body>
